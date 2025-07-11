@@ -4,8 +4,7 @@ public class GameMaster {
     public static void main(String[] args) {
 
         ArrayList<Character> party = new ArrayList<>();
-        Hero hero = new Hero("勇者", 100, "剣");
-        party.add(hero);
+        party.add(new Hero("勇者", 100, "剣"));
         party.add(new Wizard("魔法使い", 60, 20));
         party.add(new Thief("盗賊", 70));
 
@@ -47,15 +46,19 @@ public class GameMaster {
         System.out.println("ダメージを受けた勇者が突然光だした！");
         System.out.println("勇者はスーパーヒーローに進化した！\n");
 
-        int heroIndex = party.indexOf(hero);
-        if (heroIndex != -1) {
-            SuperHero superHero = new SuperHero((Hero) party.get(heroIndex));
-            party.set(heroIndex, superHero);
+        // クラスチェンジ処理
+        for (int i = 0; i < party.size(); i++) {
+            if (party.get(i) instanceof Hero && !(party.get(i) instanceof SuperHero)) {
+                Hero currentHero = (Hero) party.get(i);
+                SuperHero superHero = new SuperHero(currentHero);
+                party.set(i, superHero);
 
-            for (Monster monster : monsters) {
-                if (superHero.isAlive() && monster.isAlive()) {
-                    superHero.attack(monster);
+                for (Monster monster : monsters) {
+                    if (superHero.isAlive() && monster.isAlive()) {
+                        superHero.attack(monster);
+                    }
                 }
+                break; // 勇者は一人なので見つけたらループを抜ける
             }
         }
         System.out.println("");

@@ -20,8 +20,7 @@ public abstract class Character implements Creature {
         System.out.println(this.getName() + "：HP " + this.getHp());
     }
 
-    @Override
-    public abstract void attack(Creature target);
+    // attackメソッドはサブクラスで実装するため、ここでは再宣言しない
 
     @Override
     public String getName() {

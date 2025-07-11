@@ -5,7 +5,7 @@ public class Thief extends Character {
 
     @Override
     public void attack(Creature target) {
-        System.out.println(this.getName() + "は素早く攻撃した！" + target.getName() + target.getSuffix() + "に5のダメージを与えた！");
+        System.out.println(this.getName() + "は素早く攻撃した！" + target.getName() + "に5のダメージを与えた！");
         target.setHp(target.getHp() - 5);
     }
 }

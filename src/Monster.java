@@ -22,8 +22,7 @@ public abstract class Monster implements Creature {
         System.out.println(this.getName() + this.getSuffix() + "：HP " + this.getHp());
     }
 
-    @Override
-    public abstract void attack(Creature target);
+    // attackメソッドはサブクラスで実装するため、ここでは再宣言しない
 
     @Override
     public String getName() {
@@ -40,7 +39,6 @@ public abstract class Monster implements Creature {
         this.hp = Math.max(0, hp);
     }
 
-    @Override
     public char getSuffix() {
         return this.suffix;
     }
